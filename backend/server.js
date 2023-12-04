@@ -29,7 +29,7 @@ db.once("open", () => {
 app.post("/api/transcribe", async (req, res) => {
     try {
       const apiKey = "02SHAYxXnbSV8SmjQ5s4udXvdwbqkZHPydWUD7qOuCxy-gShPP655ElMoDo8PDWPhws0esZ3uqsEyXjNQWJV-2owPKmtA"; // Replace with your Rev.ai API key
-      const audioUrl = req.body.audioUrl; // Assuming the frontend sends the audio URL
+      const audioUrl = req.body.audioUrl;
   
       const response = await axios.post(
         "https://api.rev.ai/speechtotext/v1/jobs",
@@ -37,7 +37,7 @@ app.post("/api/transcribe", async (req, res) => {
           source_config: {
             url: audioUrl,
           },
-          metadata: "This is a test", // Optional metadata
+          metadata: "This is a test", // Optional
         },
         {
           headers: {
@@ -55,14 +55,12 @@ app.post("/api/transcribe", async (req, res) => {
     }
   });
 
-// Define routes
-// Example:
+// routes
+
 app.get("/api/data", (req, res) => {
-  // Perform MongoDB operations here
   res.json({ message: "Hello from the backend!" });
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
